@@ -54,7 +54,17 @@ def handle(src, e):
     return doc
 
 if __name__ == '__main__':
-    for src in sys.argv[1:]:
+
+    urls = set(sys.argv[1:])
+
+    try:
+        for u in DB.view('app/sources', group=True):
+            urls.add(u.key)
+    except:
+        # Don't worry about it if we can't find the old ones.
+        pass
+
+    for src in urls:
         signal.alarm(10)
         f = feedparser.parse(src)
 
