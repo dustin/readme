@@ -1,0 +1,16 @@
+<h1>Recent Messages</h1>
+<ul id="items">
+  {{#items}}
+    <li>
+      <div class="header">
+        <img src="{{rm_favicon}}" alt="favicon" /><span class="name">{{author}}</span>
+        - <a href="{{link}}" class="title">{{title}}</a>
+        [<a href="#" class="statechange" id="uninteresting-{{_id}}" title="uninteresting">U</a>,
+        <a href="#" class="statechange" id="important-{{_id}}" title="important">!</a>]
+      </div>
+      <div id="message">{{{summary}}}</div>
+      <div style="clear:left;"></div>
+    </li>
+  {{/items}}
+</ul>
+
