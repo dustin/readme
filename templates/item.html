@@ -2,8 +2,13 @@
   <div class="header">
     <img src="{{rm_favicon}}" alt="favicon" /><span class="name">{{author}}</span>
     - <a href="{{link}}" class="title">{{title}}</a>
-    [<a href="#" class="statechange" id="uninteresting-{{_id}}" title="uninteresting">U</a>,
-    <a href="#" class="statechange" id="important-{{_id}}" title="important">!</a>]
+    [<a href="#" class="statechange" id="done-{{_id}}"
+        title="done">
+      <img src="../../img/done.png" alt="done" title="done" /></a>
+    <a href="#" class="statechange" id="important-{{_id}}"
+       title="important">
+      <img src="../../img/important.png" alt="important"
+           title="important" /></a>]
   </div>
   <div id="message">{{{summary}}}</div>
   <div style="clear:left;"></div>
