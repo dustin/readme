@@ -10,13 +10,19 @@
     <div id="items"></div>
 
     <div id="sidebar">
-      <p>Some tools here would be nice.</p>
+      <ul class="statelist">
+        <li><a href="#" title="unread">Unread</a></li>
+        <li><a href="#" title="important">Important</a></li>
+        <li><a href="#" title="uninteresting">Uninteresting</a></li>
+      </ul>
     </div>
   </body>
   <script src="vendor/couchapp/loader.js"></script>
+  <script type="text/javascript" src="js/readme.js"></script>
   <script type="text/javascript" charset="utf-8">
     $.couch.app(function(app) {
       $("#items").evently("items", app);
+      rm_init_list_links(app);
     });
   </script>
 </html>
