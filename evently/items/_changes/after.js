@@ -17,4 +17,6 @@ function(me, args) {
             return false;
         });
     });
+
+    rm_refreshTimestamps();
 }
