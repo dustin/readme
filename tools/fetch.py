@@ -14,9 +14,9 @@ import couchdb
 
 import feedparser
 
-SERVER = os.getenv("COUCHDB") or 'http://127.0.0.1:5984/'
+SERVER = os.getenv("COUCHDB_SERVER") or 'http://127.0.0.1:5984/'
 
-DB = couchdb.Server(SERVER)['readme']
+DB = couchdb.Server(SERVER)[os.getenv("COUCHDB") or 'readme']
 
 ISO8601 = "%Y-%m-%dT%H:%M:%S"
 
