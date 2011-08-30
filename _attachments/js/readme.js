@@ -10,7 +10,9 @@ function rm_init_update_links(app) {
                     data: 'new_state=' + encodeURIComponent(parts[0]),
                     dataType: "json",
                     complete: function(res) {
-                        console.log("Result", res);
+                        if (res.responseText === 'change') {
+                            $('#item-' + parts[1]).hide('fast');
+                        }
                     }});
 
             return false;
