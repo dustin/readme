@@ -22,6 +22,12 @@ h1 {
   width:30%;
 }
 
+#sidebar .statelist {
+  list-style: none;
+  font-size: larger;
+  padding-left: 0;
+}
+
 #items li {
   border:4px solid #f5f5ff;
   background:#fff;
