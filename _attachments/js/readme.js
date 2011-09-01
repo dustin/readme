@@ -55,6 +55,48 @@ function rm_updateCounts(app) {
     });
 }
 
+function rm_updateHistory(app) {
+    var path = app.require("vendor/couchapp/lib/path").init(app.req);
+    var Mustache = app.require("vendor/couchapp/lib/mustache");
+    var template = '<li><span class="timestamp" title="{{when}}">{{when}}</span>: ' +
+        '{{who}} <a href="{{link}}" title="{{title}}"><img src="{{favicon}}" alt="favicon" /> ' +
+        '{{from}} &rarr; {{to}}</a></li>';
+    var target =  $("#history");
+    app.db.view('app/history', {
+        descending: true,
+        include_docs: true,
+        limit: 20,
+        success: function(d) {
+            target.html("");
+            console.log(d);
+            d.rows.forEach(function(r) {
+                var vals = {when: r.key[0],
+                            what: r.id,
+                            who: r.key[1],
+                            from: r.key[2],
+                            to: r.value,
+                            favicon: r.doc.rm_favicon,
+                            title: r.doc.title,
+                            link: path.list('todo', 'by_state', {state: r.value,
+                                                                 startkey: [r.value],
+                                                                 endkey: [r.value, {}],
+                                                                 descending: false,
+                                                                 include_docs: true,
+                                                                 limit: 50}) + "#a-" + r.id
+                           };
+                console.log(vals);
+                target.append(Mustache.to_html(template, vals));
+            });
+            rm_updateTimestamps(app);
+        }
+    });
+}
+
+function rm_refreshHistory(app) {
+    rm_updateHistory(app);
+    setTimeout(function() { rm_refreshHistory(app); }, 60000);
+}
+
 function rm_refreshTimestamps() {
     rm_updateTimestamps();
     setTimeout(rm_refreshTimestamps, 60000);

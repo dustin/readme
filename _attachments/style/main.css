@@ -36,3 +36,9 @@ div.avatar .name {
 #items ul {
   list-style: none;
 }
+
+#history {
+  list-style: none;
+  font-size: smaller;
+  padding-left: 0;
+}

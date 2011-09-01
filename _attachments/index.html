@@ -15,6 +15,11 @@
         <li><a href="#" title="important">Important</a><span id="important-count"</span></li>
         <li><a href="#" title="done">Done</a><span id="done-count"/></li>
       </ul>
+
+      <h2>Recent Activity</h2>
+      <ul id="history">
+      </ul>
+
     </div>
   </body>
   <script src="vendor/couchapp/loader.js"></script>
@@ -23,6 +28,7 @@
     $.couch.app(function(app) {
       $("#items").evently("items", app);
       rm_init_list_links(app);
+      rm_refreshHistory(app);
     });
   </script>
 </html>
