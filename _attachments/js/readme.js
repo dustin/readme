@@ -43,6 +43,18 @@ function myPretty(ts) {
         date.toString();
 }
 
+function rm_updateCounts(app) {
+    app.db.view('app/counts', {
+        group: true,
+        reduce: true,
+        success: function(d) {
+            d.rows.forEach(function(r) {
+                $('#' + r.key + '-count').text(" (" + r.value + ")");
+            });
+        }
+    });
+}
+
 function rm_refreshTimestamps() {
     rm_updateTimestamps();
     setTimeout(rm_refreshTimestamps, 60000);
@@ -88,4 +100,6 @@ function rm_init_list_links(app) {
                                                           include_docs: true,
                                                           limit: 50}));
     });
+
+    rm_updateCounts(app);
 }
