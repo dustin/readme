@@ -43,6 +43,10 @@ div.avatar .name {
   list-style: none;
 }
 
+#items li div.message {
+  display: none;
+}
+
 #history {
   list-style: none;
   font-size: smaller;

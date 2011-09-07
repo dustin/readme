@@ -126,6 +126,14 @@ function rm_init_update_links(app) {
             return false;
         });
     });
+
+    $(".more").each(function(a, el) {
+        var parts = el.id.split('-');
+        $(el).click(function() {
+            $('#message-' + parts[1]).toggle('fast');
+            return false;
+        });
+    });
 }
 
 function rm_init_list_links(app) {
