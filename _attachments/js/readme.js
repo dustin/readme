@@ -68,7 +68,6 @@ function rm_updateHistory(app) {
         limit: 20,
         success: function(d) {
             target.html("");
-            console.log(d);
             d.rows.forEach(function(r) {
                 var vals = {when: r.key[0],
                             what: r.id,
@@ -84,7 +83,6 @@ function rm_updateHistory(app) {
                                                                  include_docs: true,
                                                                  limit: 50}) + "#a-" + r.id
                            };
-                console.log(vals);
                 target.append(Mustache.to_html(template, vals));
             });
             rm_updateTimestamps(app);
